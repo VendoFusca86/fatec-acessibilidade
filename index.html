@@ -272,7 +272,26 @@
             <div class="search-icon"></div>
             <div class="search-input">Buscar no portal… (falso input)</div>
           </div>
-         
+
+        <button class="btn" onclick="aumentarFonte()">A+</button>
+        <script>
+          function aumentarFonte() {
+            var texto = document.body;
+            var estiloAtual = window.getComputedStyle(texto, null).getPropertyValue('font-size');
+            var tamanhoAtual = parseFloat(estiloAtual);
+            texto.style.fontSize = (tamanhoAtual + 2) + 'px';
+          }
+        </script>
+
+        <button class="btn" onclick="diminuirFonte()">A-</button>
+        <script>
+          function diminuirFonte() {
+            var texto = document.body;
+            var estiloAtual = window.getComputedStyle(texto, null).getPropertyValue('font-size');
+            var tamanhoAtual = parseFloat(estiloAtual);
+            texto.style.fontSize = (tamanhoAtual - 2) + 'px';
+          }
+        </script>
           
         </div>
       </div>
