@@ -11,7 +11,7 @@
       --surface: #111827;
       --surface2: #0f172a;
       --text: #e5e7eb;
-      --muted: #9ca3af;
+      --muted: #a7af9c;
       --brand: #22c55e;
       --border: rgba(255,255,255,.08);
       --shadow: 0 10px 25px rgba(0,0,0,.35);
@@ -24,7 +24,7 @@
     body{
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 30% 0%, rgba(34,197,94,.10), transparent 55%),
+      background: radial-gradient(1200px 600px at 30% 0%, rgba(250, 247, 247, 0.1), transparent 55%),
                   radial-gradient(900px 500px at 80% 20%, rgba(59,130,246,.10), transparent 45%),
                   var(--bg);
       color: var(--text);
@@ -242,6 +242,30 @@
       color: var(--muted);
       font-size: .95em;
     }
+
+    .alto-contraste {
+      --bg: #000000;
+      --surface: #000000;
+      --surface2: #000000;
+      --text: #FFFFFF;
+      --muted: #22c55e;
+      --border: #FFFFFF;
+    }
+
+    .alto-contraste a {
+      color: #000000;
+    }
+
+    .alto-contraste button {
+      background-color: #FFFFFF;
+      color: #000000;
+    }
+
+    #btn-contraste img {
+      width: 15px;
+      height: 15px;
+    }
+   
   </style>
 </head>
 
@@ -291,6 +315,32 @@
             var tamanhoAtual = parseFloat(estiloAtual);
             texto.style.fontSize = (tamanhoAtual - 2) + 'px';
           }
+        </script>
+
+        <button id="btn-contraste" aria-pressed="false" aria-label="Ativar alto contraste">
+          <img id="icone-contraste" src="img/contraste_black.png" alt="">
+        </button>
+        <script>
+          const botao = document.getElementById("btn-contraste");
+          const icone = document.getElementById("icone-contraste");
+
+          botao.addEventListener("click", function() {
+
+            document.body.classList.toggle("alto-contraste");
+
+            const ativo = document.body.classList.contains("alto-contraste");
+
+            botao.setAttribute("aria-pressed", ativo);
+
+            if (ativo) {
+              icone.src = "img/contraste_white.png";
+              botao.setAttribute("aria-label", "Desativar alto contraste");
+            } else {
+              icone.src = "img/contraste_black.png";
+              botao.setAttribute("aria-label", "Ativar alto contraste");
+            }
+
+          });
         </script>
           
         </div>
